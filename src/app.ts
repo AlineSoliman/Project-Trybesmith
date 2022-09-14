@@ -11,6 +11,8 @@ const productsController = new ProductsController();
 
 app.get('/products', productsController.getAll);
 
+app.post('/products', productsController.create);
+
 app.get('/', (req: Request, res: Response) => {
   res.status(StatusCodes.OK).send('Express + TypeScript');
 });
