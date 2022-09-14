@@ -2,6 +2,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import 'express-async-errors';
 import ProductsController from './controllers/products.controller';
+import UsersController from './controllers/users.controller';
 
 const app = express();
 
@@ -9,9 +10,13 @@ app.use(express.json());
 
 const productsController = new ProductsController();
 
+const usersController = new UsersController();
+
 app.get('/products', productsController.getAll);
 
 app.post('/products', productsController.create);
+
+app.post('/users', usersController.create);
 
 app.get('/', (req: Request, res: Response) => {
   res.status(StatusCodes.OK).send('Express + TypeScript');
